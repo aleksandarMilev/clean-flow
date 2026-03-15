@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Контакти | КлийнФлоу</title>
   <meta name="description" content="Свържете се с нашата почистваща фирма за поръчка на почистване, оглед или индивидуална оферта.">
   <meta name="keywords" content="контакти почистваща фирма, заявка за почистване, оферта за почистване">
   <meta name="author" content="КлийнФлоу">
   <meta name="theme-color" content="#0f8d7a">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self'; base-uri 'self'; upgrade-insecure-requests">
   <link rel="canonical" href="https://www.kleanpro.bg/contact.html">
   <meta property="og:locale" content="bg_BG">
   <meta property="og:type" content="website">
@@ -51,6 +54,7 @@
 
 </head>
 <body class="page page-contact">
+<a class="skip-link" href="#main-content">Пропусни към съдържанието</a>
 
 <header class="site-header">
   <div class="container header-inner">
@@ -76,7 +80,7 @@
   </div>
 </header>
 
-<main>
+<main id="main-content">
 
 <section class="page-hero">
   <div class="container">
@@ -95,15 +99,15 @@
   <div class="form-grid">
     <label>
       <span>Име</span>
-      <input type="text" name="name" placeholder="Вашето име" required>
+      <input type="text" name="name" placeholder="Вашето име" autocomplete="name" required>
     </label>
     <label>
       <span>Телефон</span>
-      <input type="tel" name="phone" placeholder="08xx xxx xxx" required>
+      <input type="tel" name="phone" placeholder="08xx xxx xxx" autocomplete="tel" inputmode="tel" pattern="^\+?[0-9\s-]{8,}$" required>
     </label>
     <label>
       <span>Имейл</span>
-      <input type="email" name="email" placeholder="you@example.com">
+      <input type="email" name="email" placeholder="you@example.com" autocomplete="email">
     </label>
     <label>
       <span>Вид услуга</span>
@@ -121,9 +125,14 @@
       <textarea name="message" rows="5" placeholder="Опишете площ, локация и предпочитан ден"></textarea>
     </label>
   </div>
+    <label class="consent-field form-grid__full">
+    <input type="checkbox" name="gdpr_consent" required>
+    <span>Съгласен/на съм личните ми данни да бъдат обработвани за целите на обратна връзка съгласно <a href="privacy-policy.html">Политиката за поверителност</a> и <a href="terms.html">Общите условия</a>.</span>
+  </label>
+  <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
   <input type="hidden" name="_subject" value="Нова заявка за почистване от сайта">
   <button class="btn btn--primary" type="submit">Заяви безплатна оферта</button>
-  <p class="form-note">Формата е подготвена за интеграция с Formspree или собствен backend.</p>
+  <p class="form-note">Изпращайки формата, потвърждавате, че сте запознати с обработката на лични данни. Формата е подготвена за интеграция с Formspree или собствен backend.</p>
 </form>
 </div>
     <div class="contact-card">
@@ -161,6 +170,16 @@
       </ul>
     </div>
     <div>
+      <h3>Полезни връзки</h3>
+      <ul class="footer-links">
+        <li><a href="faq.html">ЧЗВ</a></li>
+        <li><a href="gallery.html">Галерия</a></li>
+        <li><a href="privacy-policy.html">Политика за поверителност</a></li>
+        <li><a href="cookies.html">Политика за бисквитки</a></li>
+        <li><a href="terms.html">Общи условия</a></li>
+      </ul>
+    </div>
+    <div>
       <h3>Контакти</h3>
       <ul class="footer-links">
         <li><a href="tel:+359888123456">0888 123 456</a></li>
@@ -170,7 +189,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 КлийнФлоу. Всички права запазени.</p>
+    <p>© <span data-current-year>2026</span> КлийнФлоу. Всички права запазени.</p>
   </div>
 </footer>
 <a class="call-fab" href="tel:+359888123456" aria-label="Обади се сега">Обади се сега</a>

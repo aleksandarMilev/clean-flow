@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Основно почистване | КлийнФлоу</title>
   <meta name="description" content="Подходящо решение, когато стандартното почистване не е достатъчно и е нужен по-детайлен подход към целия имот.">
   <meta name="keywords" content="основно почистване, дълбоко почистване, почистване на дом">
   <meta name="author" content="КлийнФлоу">
   <meta name="theme-color" content="#0f8d7a">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self'; base-uri 'self'; upgrade-insecure-requests">
   <link rel="canonical" href="https://www.kleanpro.bg/deep-cleaning.html">
   <meta property="og:locale" content="bg_BG">
   <meta property="og:type" content="website">
@@ -51,6 +54,7 @@
 
 </head>
 <body class="page page-service">
+<a class="skip-link" href="#main-content">Пропусни към съдържанието</a>
 
 <header class="site-header">
   <div class="container header-inner">
@@ -76,7 +80,7 @@
   </div>
 </header>
 
-<main>
+<main id="main-content">
 
 <section class="page-hero">
   <div class="container">
@@ -92,7 +96,7 @@
   <div class="container content-layout">
     <div>
       <div class="hero__image">
-        <img src="images/service-deep.svg" alt="Детайлно основно почистване на дневна и кухня" loading="eager" width="900" height="650">
+        <img src="images/service-deep.svg" alt="Детайлно основно почистване на дневна и кухня" loading="eager" fetchpriority="high" decoding="async" width="900" height="650">
       </div>
     </div>
     <aside class="contact-card sidebar-card">
@@ -153,6 +157,16 @@
       </ul>
     </div>
     <div>
+      <h3>Полезни връзки</h3>
+      <ul class="footer-links">
+        <li><a href="faq.html">ЧЗВ</a></li>
+        <li><a href="gallery.html">Галерия</a></li>
+        <li><a href="privacy-policy.html">Политика за поверителност</a></li>
+        <li><a href="cookies.html">Политика за бисквитки</a></li>
+        <li><a href="terms.html">Общи условия</a></li>
+      </ul>
+    </div>
+    <div>
       <h3>Контакти</h3>
       <ul class="footer-links">
         <li><a href="tel:+359888123456">0888 123 456</a></li>
@@ -162,7 +176,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 КлийнФлоу. Всички права запазени.</p>
+    <p>© <span data-current-year>2026</span> КлийнФлоу. Всички права запазени.</p>
   </div>
 </footer>
 <a class="call-fab" href="tel:+359888123456" aria-label="Обади се сега">Обади се сега</a>
