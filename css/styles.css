@@ -120,7 +120,6 @@ summary:focus-visible {
 .cards { display: grid; gap: 1.25rem; }
 .cards--services { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 .cards--features { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-.cards--testimonials { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
 .cards--pricing { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); align-items: stretch; }
 .card {
   background: var(--surface);
@@ -132,7 +131,7 @@ summary:focus-visible {
 }
 .card:hover { transform: translateY(-4px); border-color: rgba(15, 106, 216, 0.2); }
 .service-card__icon { font-size: 2rem; margin-bottom: 1rem; }
-.feature-card h3, .service-card h3, .price-card h3, .testimonial strong { margin-top: 0; }
+.feature-card h3, .service-card h3, .price-card h3 { margin-top: 0; }
 .site-header {
   position: sticky;
   top: 0;
