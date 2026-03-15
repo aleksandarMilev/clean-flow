@@ -294,6 +294,11 @@ summary:focus-visible {
 .form-grid label span { font-weight: 700; }
 .form-grid__full { grid-column: 1 / -1; }
 .form-note { color: var(--muted); font-size: 0.95rem; }
+.form-status {
+  margin: 0.75rem 0 0;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
 .consent-field {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -410,6 +415,10 @@ summary:focus-visible {
 .cookie-banner .btn--secondary {
   background: transparent;
   border-color: rgba(255, 255, 255, 0.34);
+  color: #fff;
+}
+.cookie-banner .btn--secondary:hover {
+  border-color: rgba(255, 255, 255, 0.7);
   color: #fff;
 }
 .cookie-banner .btn--primary { box-shadow: none; }

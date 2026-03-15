@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.kleanpro.bg/sitemap.xml
+Sitemap: https://PLACEHOLDER_DOMAIN/sitemap.xml

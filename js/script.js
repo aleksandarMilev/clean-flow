@@ -1,9 +1,12 @@
 
-// Mobile navigation, active state and small UX enhancements
+// Mobile navigation, active state and conversion helpers
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.querySelector('.site-nav');
 const header = document.querySelector('.site-header');
 const yearNodes = document.querySelectorAll('[data-current-year]');
+const GA4_ID = 'G-XXXXXXXXXX';
+const COOKIE_BANNER_ENABLED = true;
+const CONSENT_KEY = 'cleanflow_cookie_consent';
 
 const closeMenu = () => {
   if (!navToggle || !siteNav) return;
@@ -57,24 +60,108 @@ yearNodes.forEach((node) => {
   node.textContent = String(new Date().getFullYear());
 });
 
-const cookieKey = 'cleanflow_cookie_notice_ack';
-if (!localStorage.getItem(cookieKey)) {
+const loadGa4 = () => {
+  if (!GA4_ID || GA4_ID === 'G-XXXXXXXXXX') return;
+  if (window.__gaLoaded) return;
+  window.__gaLoaded = true;
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', GA4_ID, { anonymize_ip: true });
+};
+
+const setConsent = (value) => {
+  localStorage.setItem(CONSENT_KEY, value);
+  if (value === 'accepted') {
+    loadGa4();
+  }
+};
+
+const currentConsent = localStorage.getItem(CONSENT_KEY);
+if (currentConsent === 'accepted') {
+  loadGa4();
+}
+
+if (COOKIE_BANNER_ENABLED && !currentConsent) {
   const banner = document.createElement('section');
   banner.className = 'cookie-banner';
-  banner.setAttribute('aria-label', 'Съобщение за бисквитки');
+  banner.setAttribute('aria-label', 'Съгласие за бисквитки');
   banner.innerHTML = `
-    <p>Използваме само необходими бисквитки за сигурност и функционалност. Вижте <a href="cookies.html">Политика за бисквитки</a>.</p>
+    <p>Използваме необходими бисквитки и аналитични бисквитки (Google Analytics) след съгласие. Вижте <a href="cookies.html">Политика за бисквитки</a>.</p>
     <div class="cookie-banner__actions">
-      <button type="button" class="btn btn--primary" data-cookie-accept>Разбрах</button>
-      <a class="btn btn--secondary" href="privacy-policy.html">Поверителност</a>
+      <button type="button" class="btn btn--primary" data-cookie-accept>Приемам</button>
+      <button type="button" class="btn btn--secondary" data-cookie-decline>Отказвам</button>
     </div>
   `;
   document.body.appendChild(banner);
+
   const acceptBtn = banner.querySelector('[data-cookie-accept]');
-  if (acceptBtn) {
+  const declineBtn = banner.querySelector('[data-cookie-decline]');
+  if (acceptBtn instanceof HTMLButtonElement) {
     acceptBtn.addEventListener('click', () => {
-      localStorage.setItem(cookieKey, '1');
+      setConsent('accepted');
+      banner.remove();
+    });
+  }
+  if (declineBtn instanceof HTMLButtonElement) {
+    declineBtn.addEventListener('click', () => {
+      setConsent('declined');
       banner.remove();
     });
   }
 }
+
+document.querySelectorAll('form.quote-form').forEach((form) => {
+  form.addEventListener('submit', async (event) => {
+    const statusNode = form.querySelector('.form-status');
+    const action = form.getAttribute('action') || '';
+    if (!action.includes('formspree.io')) return;
+
+    event.preventDefault();
+    if (!(form instanceof HTMLFormElement)) return;
+
+    if (statusNode) {
+      statusNode.textContent = 'Изпращаме заявката...';
+    }
+
+    const submitBtn = form.querySelector('button[type=\"submit\"]');
+    if (submitBtn instanceof HTMLButtonElement) {
+      submitBtn.disabled = true;
+    }
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(action, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (response.ok) {
+        form.reset();
+        if (statusNode) {
+          statusNode.textContent = 'Благодарим ви! Заявката е изпратена успешно. Ще се свържем с вас възможно най-скоро.';
+        }
+      } else {
+        if (statusNode) {
+          statusNode.textContent = 'Неуспешно изпращане. Моля, опитайте отново или се обадете на 0895 136 651.';
+        }
+      }
+    } catch (error) {
+      if (statusNode) {
+        statusNode.textContent = 'Възникна проблем при изпращането. Моля, опитайте отново.';
+      }
+    } finally {
+      if (submitBtn instanceof HTMLButtonElement) {
+        submitBtn.disabled = false;
+      }
+    }
+  });
+});
