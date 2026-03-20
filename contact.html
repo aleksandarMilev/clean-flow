@@ -10,11 +10,11 @@
     <title>Контакти | КлийнФлоу</title>
     <meta
       name="description"
-      content="Свържете се с нашата почистваща фирма за поръчка на почистване, оглед или индивидуална оферта."
+      content="Изпратете запитване за базово почистване в София и Перник. Обхватът и цената се потвърждават след кратко уточнение на обекта."
     />
     <meta
       name="keywords"
-      content="контакти почистваща фирма, заявка за почистване, оферта за почистване"
+      content="контакти базово почистване, запитване за почистване, София, Перник"
     />
     <meta name="author" content="КлийнФлоу" />
     <meta name="theme-color" content="#0f8d7a" />
@@ -30,7 +30,7 @@
     <meta property="og:title" content="Контакти | КлийнФлоу" />
     <meta
       property="og:description"
-      content="Свържете се с нашата почистваща фирма за поръчка на почистване, оглед или индивидуална оферта."
+      content="Изпратете запитване за базово почистване в София и Перник. Обхватът и цената се потвърждават след кратко уточнение на обекта."
     />
     <meta property="og:url" content="https://PLACEHOLDER_DOMAIN/contact.html" />
     <meta property="og:site_name" content="КлийнФлоу" />
@@ -42,7 +42,7 @@
     <meta name="twitter:title" content="Контакти | КлийнФлоу" />
     <meta
       name="twitter:description"
-      content="Свържете се с нашата почистваща фирма за поръчка на почистване, оглед или индивидуална оферта."
+      content="Изпратете запитване за базово почистване в София и Перник. Обхватът и цената се потвърждават след кратко уточнение на обекта."
     />
     <meta
       name="twitter:image"
@@ -76,8 +76,7 @@
           { "@type": "City", "name": "София" },
           { "@type": "City", "name": "Перник" }
         ],
-        "openingHours": "Mo-Su 07:00-19:00",
-        "description": "Професионално почистване на апартаменти и офиси в София и Перник.",
+        "description": "Базово почистване на апартаменти, подходящи къщи и малки офиси в София и Перник.",
         "contactPoint": [
           {
             "@type": "ContactPoint",
@@ -112,7 +111,7 @@
         </nav>
         <div class="nav-actions">
           <a class="header-phone" href="tel:+359895136651">0895 136 651</a>
-          <a class="btn btn--primary" href="contact.html">Поръчай почистване</a>
+          <a class="btn btn--primary" href="contact.html">Изпрати запитване</a>
         </div>
         <button
           class="nav-toggle"
@@ -132,11 +131,12 @@
             <a href="index.html">Начало</a> / Контакти
           </div>
           <div class="section-heading">
-            <span class="eyebrow">Свържете се с нас</span>
-            <h1>Поръчайте почистване или поискайте индивидуална оферта</h1>
+            <span class="eyebrow">Запитване</span>
+            <h1>Изпратете реалистично запитване за базово почистване</h1>
             <p>
-              Използвайте формата, за да ни изпратите кратко описание на вашия
-              обект. Можете и директно да се обадите за по-бърз контакт.
+              Работим за базово почистване на апартаменти, подходящи къщи и
+              малки офиси в София и Перник. След кратко уточнение на детайлите
+              потвърждаваме обхват, възможен график и крайна цена.
             </p>
           </div>
         </div>
@@ -150,6 +150,15 @@
               method="post"
               accept-charset="UTF-8"
             >
+              <p class="form-note">
+                За точна оферта ни трябват няколко конкретни детайла за обекта и
+                очакванията ви. Това не е автоматично потвърждение за изпълнение.
+              </p>
+              <p class="form-note">
+                Не приемаме заявки за дълбоко и следремонтно почистване,
+                индустриални/големи търговски обекти, пране на килими, матраци и
+                тапицерии, както и рисково външно почистване на прозорци/фасади.
+              </p>
               <div class="form-grid">
                 <label>
                   <span>Име</span>
@@ -183,13 +192,108 @@
                   />
                 </label>
                 <label>
-                  <span>Вид услуга</span>
+                  <span>Тип обект</span>
                   <select name="service" required>
-                    <option value="">Изберете услуга</option>
-                    <option>Почистване на апартаменти</option>
-                    <option>Почистване на офиси</option>
-                    <option>Основно почистване</option>
-                    <option>Почистване след ремонт</option>
+                    <option value="">Изберете тип обект</option>
+                    <option>Базово почистване на апартамент</option>
+                    <option>Базово почистване на къща (при подходящ обект)</option>
+                    <option>Базово почистване на малък офис</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Район / адрес</span>
+                  <input
+                    type="text"
+                    name="address"
+                    placeholder="Град, квартал и ориентир за адрес"
+                    autocomplete="street-address"
+                    required
+                  />
+                </label>
+                <label>
+                  <span>Квадратура (приблизително)</span>
+                  <input
+                    type="text"
+                    name="size"
+                    placeholder="напр. 75 кв.м"
+                    inputmode="text"
+                    required
+                  />
+                </label>
+                <label>
+                  <span>Брой стаи</span>
+                  <input
+                    type="number"
+                    name="rooms"
+                    min="0"
+                    step="1"
+                    placeholder="напр. 3"
+                  />
+                </label>
+                <label>
+                  <span>Брой бани / тоалетни</span>
+                  <input
+                    type="number"
+                    name="bathrooms"
+                    min="0"
+                    step="1"
+                    placeholder="напр. 1"
+                  />
+                </label>
+                <label>
+                  <span>Кога е почиствано последно</span>
+                  <input
+                    type="text"
+                    name="last_cleaned"
+                    placeholder="напр. преди 2 седмици"
+                  />
+                </label>
+                <label>
+                  <span>Има ли домашни любимци</span>
+                  <select name="pets">
+                    <option value="">Изберете</option>
+                    <option>Да</option>
+                    <option>Не</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Има ли натрупано по-тежко замърсяване</span>
+                  <select name="heavy_dirt">
+                    <option value="">Изберете</option>
+                    <option>Да</option>
+                    <option>Не</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Еднократно или регулярно</span>
+                  <select name="frequency">
+                    <option value="">Изберете</option>
+                    <option>Еднократно</option>
+                    <option>Регулярно</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Желан ден / час</span>
+                  <input
+                    type="text"
+                    name="preferred_time"
+                    placeholder="напр. вторник след 18:30"
+                  />
+                </label>
+                <label>
+                  <span>Достъп, паркиране, асансьор</span>
+                  <input
+                    type="text"
+                    name="access"
+                    placeholder="напр. няма асансьор, трудно паркиране"
+                  />
+                </label>
+                <label>
+                  <span>Нестандартен час (вечер/уикенд)</span>
+                  <select name="off_hours">
+                    <option value="">Изберете</option>
+                    <option>Да</option>
+                    <option>Не</option>
                   </select>
                 </label>
                 <label class="form-grid__full">
@@ -197,7 +301,7 @@
                   <textarea
                     name="message"
                     rows="5"
-                    placeholder="Опишете обекта, квадратура, район и предпочитан ден"
+                    placeholder="Опишете какво очаквате да се включи и текущото състояние на обекта"
                   ></textarea>
                 </label>
               </div>
@@ -221,15 +325,16 @@
               <input
                 type="hidden"
                 name="_subject"
-                value="Нова заявка за почистване от сайта"
+                value="Ново запитване за базово почистване от сайта"
               />
               <input type="hidden" name="_source" value="cleanflow-site" />
               <button class="btn btn--primary" type="submit">
-                Заяви безплатна оферта
+                Изпрати запитване
               </button>
               <p class="form-note">
-                Изпращайки формата, потвърждавате, че сте запознати с
-                обработката на лични данни. Данните се изпращат през Formspree.
+                При неясно или по-тежко състояние може да поискаме допълнително
+                уточнение или снимки преди потвърждение. Запитвания извън
+                обхвата на услугата могат да бъдат отказани.
               </p>
               <p class="form-status" aria-live="polite"></p>
             </form>
@@ -262,9 +367,16 @@
                 >
               </li>
               <li>Локация: Обслужваме София и Перник</li>
-              <li>Работно време: Всеки ден: 07:00 – 19:00</li>
+              <li>Отдалечени или неудобни локации: само по предварително съгласуване и с ценова корекция</li>
+              <li>Часове: по предварителна уговорка (вечер/уикенд при възможност)</li>
             </ul>
-            <h3>Бързи действия</h3>
+            <h3>Преди потвърждение</h3>
+            <p>
+              Потвърждаваме цена и обхват след кратко уточнение на заявката.
+              Обекти извън обхват или с нереалистични очаквания може да не бъдат
+              приети.
+            </p>
+            <h3>Контакт</h3>
             <div class="btn-row">
               <a class="btn btn--primary" href="tel:+359895136651"
                 >Обади се сега</a
@@ -282,19 +394,19 @@
       <div class="container footer-grid">
         <div>
           <a class="logo logo--footer" href="index.html">КлийнФлоу</a>
-          <p>Премиум почистване на апартаменти и офиси в София и Перник.</p>
+          <p>Базово почистване на апартаменти, къщи и малки офиси в София и Перник.</p>
         </div>
         <div>
           <h3>Услуги</h3>
           <ul class="footer-links">
             <li>
-              <a href="apartment-cleaning.html">Почистване на апартаменти</a>
+              <a href="apartment-cleaning.html">Базово почистване на апартаменти</a>
             </li>
-            <li><a href="office-cleaning.html">Почистване на офиси</a></li>
-            <li><a href="deep-cleaning.html">Основно почистване</a></li>
+            <li><a href="office-cleaning.html">Базово почистване на малки офиси</a></li>
+            <li><a href="deep-cleaning.html">Базово почистване на къщи</a></li>
             <li>
               <a href="after-renovation-cleaning.html"
-                >Почистване след ремонт</a
+                >Какво не включваме</a
               >
             </li>
           </ul>
@@ -320,7 +432,7 @@
               >
             </li>
             <li>Обслужваме София и Перник</li>
-            <li>Всеки ден: 07:00 – 19:00</li>
+            <li>Часове: по предварителна уговорка</li>
           </ul>
         </div>
       </div>
