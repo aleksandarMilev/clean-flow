@@ -236,7 +236,7 @@ document.querySelectorAll("form.quote-form").forEach((form) => {
       } else {
         if (statusNode) {
           statusNode.textContent =
-            "Неуспешно изпращане. Моля, опитайте отново или се обадете на 0895 136 651.";
+            "Неуспешно изпращане. Моля, опитайте отново или се обадете на 0895 136 651 или 0896 654 801.";
         }
       }
     } catch (error) {

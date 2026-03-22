@@ -74,7 +74,7 @@
         "alternateName": "КлийнФлоу",
         "url": "https://PLACEHOLDER_DOMAIN",
         "image": "https://PLACEHOLDER_DOMAIN/images/hero-cleaning.png",
-        "telephone": "+359895136651",
+        "telephone": ["+359895136651", "+359896654801"],
         "email": "office@PLACEHOLDER_DOMAIN",
         "address": {
           "@type": "PostalAddress",
@@ -119,7 +119,10 @@
           </ul>
         </nav>
         <div class="nav-actions">
+          <div class="header-phones">
           <a class="header-phone" href="tel:+359895136651">0895 136 651</a>
+          <a class="header-phone" href="tel:+359896654801">0896 654 801</a>
+        </div>
           <a class="btn btn--primary" href="contact.html">Изпрати запитване</a>
         </div>
         <button
@@ -149,9 +152,8 @@
               <a class="btn btn--primary" href="contact.html"
                 >Изпрати запитване</a
               >
-              <a class="btn btn--secondary" href="tel:+359895136651"
-                >Обади се сега</a
-              >
+              <a class="btn btn--secondary" href="tel:+359895136651">0895 136 651</a>
+              <a class="btn btn--secondary" href="tel:+359896654801">0896 654 801</a>
             </div>
             <p class="lead">
               Носим собствени уреди, препарати и консумативи.
@@ -171,7 +173,7 @@
             </div>
             <div class="hero__badge">
               <strong>Изпрати запитване лесно</strong>
-              <p>Изпрати запитване онлайн или се обади на 0895 136 651.</p>
+              <p>Изпрати запитване онлайн или се обади на 0895 136 651 или 0896 654 801.</p>
             </div>
           </div>
         </div>
@@ -437,9 +439,8 @@
             </p>
           </div>
           <div class="btn-row">
-            <a class="btn btn--secondary" href="tel:+359895136651"
-              >Обади се сега</a
-            >
+            <a class="btn btn--secondary" href="tel:+359895136651">0895 136 651</a>
+              <a class="btn btn--secondary" href="tel:+359896654801">0896 654 801</a>
             <a class="btn btn--secondary" href="contact.html"
               >Изпрати запитване</a
             >
@@ -491,7 +492,7 @@
                   <input
                     type="tel"
                     name="phone"
-                    placeholder="0895 136 651"
+                    placeholder="0895 136 651 / 0896 654 801"
                     autocomplete="tel"
                     inputmode="tel"
                     pattern="^\+?[0-9\s-]{8,}$"
@@ -658,9 +659,10 @@
         </p>
       </div>
     </footer>
-    <a class="call-fab" href="tel:+359895136651" aria-label="Обади се сега"
-      >Обади се сега</a
-    >
+    <div class="call-fab-group" aria-label="Телефони за бързо обаждане">
+      <a class="call-fab" href="tel:+359895136651" aria-label="Обади се на 0895 136 651">0895 136 651</a>
+      <a class="call-fab call-fab--alt" href="tel:+359896654801" aria-label="Обади се на 0896 654 801">0896 654 801</a>
+    </div>
 
     <script src="js/script.js" defer></script>
   </body>
