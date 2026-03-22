@@ -868,6 +868,47 @@ summary:focus-visible {
   gap: 1.35rem;
 }
 
+.form-value-block {
+  background: linear-gradient(165deg, #ffffff 0%, #fbfdff 100%);
+  border: 1px solid rgba(13, 139, 121, 0.12);
+  border-radius: var(--radius-lg);
+  padding: clamp(1rem, 2vw, 1.3rem);
+  margin-bottom: 0.8rem;
+}
+
+.form-value-block h3 {
+  margin: 0 0 0.9rem;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-weight: 780;
+  color: var(--primary-strong);
+  letter-spacing: -0.02em;
+}
+
+.form-value-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.form-value-list li {
+  position: relative;
+  padding-left: 1.55rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.42;
+}
+
+.form-value-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--primary);
+  font-weight: 800;
+}
+
 .quote-form,
 .contact-card {
   background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
@@ -908,6 +949,11 @@ summary:focus-visible {
   margin-bottom: 0;
   color: var(--text-muted);
   font-size: 0.94rem;
+}
+
+.form-note a {
+  color: var(--accent-strong);
+  text-decoration: underline;
 }
 
 .form-status {
@@ -1530,6 +1576,20 @@ th {
 
   .cta-panel {
     border-radius: var(--radius-lg);
+  }
+
+  .form-value-block {
+    padding: clamp(0.9rem, 1.8vw, 1.2rem);
+  }
+
+  .form-value-block h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .form-value-list li {
+    font-size: 0.9rem;
+    padding-left: 1.4rem;
   }
 }
 
