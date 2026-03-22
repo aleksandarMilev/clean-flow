@@ -5,6 +5,11 @@ const yearNodes = document.querySelectorAll("[data-current-year]");
 const GA4_ID = "G-XXXXXXXXXX";
 const COOKIE_BANNER_ENABLED = true;
 const CONSENT_KEY = "cleanflow_cookie_consent";
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+);
+
+document.documentElement.classList.add("js");
 
 const closeMenu = () => {
   if (!navToggle || !siteNav) {
@@ -81,6 +86,44 @@ window.addEventListener(
 yearNodes.forEach((node) => {
   node.textContent = String(new Date().getFullYear());
 });
+
+const revealNodes = Array.from(document.querySelectorAll(".reveal"));
+if (revealNodes.length > 0) {
+  const showNode = (node) => {
+    node.classList.add("is-visible");
+  };
+
+  if (prefersReducedMotion.matches || !("IntersectionObserver" in window)) {
+    revealNodes.forEach(showNode);
+  } else {
+    revealNodes.forEach((node, index) => {
+      node.style.transitionDelay = `${Math.min(index % 4, 3) * 70}ms`;
+    });
+
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          showNode(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -10% 0px" },
+    );
+
+    const viewportRevealEdge = window.innerHeight * 0.92;
+    revealNodes.forEach((node) => {
+      if (node.getBoundingClientRect().top < viewportRevealEdge) {
+        showNode(node);
+      } else {
+        revealObserver.observe(node);
+      }
+    });
+  }
+}
 
 const loadGa4 = () => {
   if (!GA4_ID || GA4_ID === "G-XXXXXXXXXX") {
