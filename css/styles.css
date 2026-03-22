@@ -933,6 +933,25 @@ summary:focus-visible {
   font-weight: 900;
 }
 
+.check-list--excluded li {
+  padding-left: 1.7rem;
+}
+
+.check-list--excluded li::before {
+  content: "\2715";
+  top: 0.1rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #b96f6f;
+  background: rgba(185, 111, 111, 0.12);
+  font-size: 0.68rem;
+  line-height: 1;
+  font-weight: 800;
+}
+
 .breadcrumbs {
   margin-bottom: 0.95rem;
   color: var(--text-soft);
@@ -1034,31 +1053,6 @@ summary:focus-visible {
 .faq-list p {
   margin: 0.8rem 0 0;
   color: var(--text-muted);
-}
-
-.gallery-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-}
-
-.gallery-card {
-  overflow: hidden;
-  padding: 0;
-}
-
-.gallery-card img {
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  object-position: center;
-}
-
-.gallery-card figcaption {
-  margin: 0;
-  padding: 0.86rem 1rem 1rem;
-  color: var(--text-muted);
-  font-weight: 700;
 }
 
 .error-page {
