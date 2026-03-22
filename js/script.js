@@ -9,6 +9,20 @@ const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 );
 
+// Currency conversion utility
+const EUR_TO_BGN_RATE = 1.96;
+
+const formatPrice = (eurAmount) => {
+  const bgnAmount = Math.round(eurAmount * EUR_TO_BGN_RATE);
+  return bgnAmount;
+};
+
+const formatPriceRange = (eurMin, eurMax) => {
+  const bgnMin = formatPrice(eurMin);
+  const bgnMax = formatPrice(eurMax);
+  return { bgnMin, bgnMax };
+};
+
 document.documentElement.classList.add("js");
 
 const closeMenu = () => {

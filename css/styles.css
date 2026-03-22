@@ -797,6 +797,15 @@ summary:focus-visible {
   letter-spacing: -0.03em;
 }
 
+.price-bgn {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  color: var(--text-soft);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
 .cta-panel {
   position: relative;
   overflow: hidden;
@@ -1197,6 +1206,10 @@ td {
   border-bottom: 1px solid rgba(197, 213, 226, 0.6);
 }
 
+td .price-bgn {
+  margin-top: 0.3rem;
+}
+
 th {
   background: #f1f7fb;
   font-size: 0.82rem;
@@ -1204,6 +1217,17 @@ th {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #264661;
+}
+
+.pricing-note {
+  margin-bottom: 1.2rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  background: var(--surface-tint);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-xs);
+  line-height: 1.5;
 }
 
 .site-footer {
