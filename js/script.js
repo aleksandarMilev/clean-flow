@@ -251,3 +251,51 @@ document.querySelectorAll("form.quote-form").forEach((form) => {
     }
   });
 });
+
+// Call FAB toggle functionality
+const callFabToggle = document.querySelector("[data-call-fab-toggle]");
+const callFabGroup = document.querySelector(".call-fab-group");
+const callFabMenu = document.querySelector(".call-fab-menu");
+const callFabLinks = document.querySelectorAll(".call-fab-menu .call-fab");
+
+const closeCallFabMenu = () => {
+  if (!callFabToggle || !callFabGroup) {
+    return;
+  }
+  callFabGroup.classList.remove("is-open");
+  callFabToggle.setAttribute("aria-expanded", "false");
+};
+
+if (callFabToggle && callFabGroup && callFabMenu) {
+  callFabToggle.addEventListener("click", () => {
+    const isOpen = callFabGroup.classList.contains("is-open");
+    callFabGroup.classList.toggle("is-open", !isOpen);
+    callFabToggle.setAttribute("aria-expanded", String(!isOpen));
+  });
+
+  callFabLinks.forEach((link) => {
+    link.addEventListener("click", closeCallFabMenu);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeCallFabMenu();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    const isOpen = callFabGroup.classList.contains("is-open");
+    if (!isOpen) {
+      return;
+    }
+
+    const target = event.target;
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    if (!callFabGroup.contains(target) && !callFabToggle.contains(target)) {
+      closeCallFabMenu();
+    }
+  });
+}

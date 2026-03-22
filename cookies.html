@@ -106,9 +106,9 @@
         </nav>
         <div class="nav-actions">
           <div class="header-phones">
-          <a class="header-phone" href="tel:+359895136651">0895 136 651</a>
-          <a class="header-phone" href="tel:+359896654801">0896 654 801</a>
-        </div>
+            <a class="header-phone" href="tel:+359895136651">0895 136 651</a>
+            <a class="header-phone" href="tel:+359896654801">0896 654 801</a>
+          </div>
           <a class="btn btn--primary" href="contact.html">Изпрати запитване</a>
         </div>
         <button
@@ -187,7 +187,9 @@
             <li>
               <a href="apartment-cleaning.html">Почистване на апартаменти</a>
             </li>
-            <li><a href="office-cleaning.html">Почистване на малки офиси</a></li>
+            <li>
+              <a href="office-cleaning.html">Почистване на малки офиси</a>
+            </li>
             <li><a href="house-cleaning.html">Почистване на къщи</a></li>
           </ul>
         </div>
@@ -222,9 +224,30 @@
         </p>
       </div>
     </footer>
-    <div class="call-fab-group" aria-label="Телефони за бързо обаждане">
-      <a class="call-fab" href="tel:+359895136651" aria-label="Обади се на 0895 136 651">0895 136 651</a>
-      <a class="call-fab call-fab--alt" href="tel:+359896654801" aria-label="Обади се на 0896 654 801">0896 654 801</a>
+    <div class="call-fab-group" aria-label="Бързо обаждане">
+      <button
+        class="call-fab-toggle"
+        aria-label="Разширен телефони за обаждане"
+        aria-expanded="false"
+        aria-controls="call-fab-menu"
+        data-call-fab-toggle
+      >
+        📞
+      </button>
+      <div class="call-fab-menu" id="call-fab-menu">
+        <a
+          class="call-fab"
+          href="tel:+359895136651"
+          aria-label="Обади се на 0895 136 651"
+          >0895 136 651</a
+        >
+        <a
+          class="call-fab"
+          href="tel:+359896654801"
+          aria-label="Обади се на 0896 654 801"
+          >0896 654 801</a
+        >
+      </div>
     </div>
 
     <script src="js/script.js" defer></script>
