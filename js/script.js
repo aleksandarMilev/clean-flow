@@ -1,4 +1,3 @@
-// Mobile navigation, active state and conversion helpers
 const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.querySelector(".site-nav");
 const header = document.querySelector(".site-header");
@@ -8,17 +7,23 @@ const COOKIE_BANNER_ENABLED = true;
 const CONSENT_KEY = "cleanflow_cookie_consent";
 
 const closeMenu = () => {
-  if (!navToggle || !siteNav) return;
+  if (!navToggle || !siteNav) {
+    return;
+  }
+
   siteNav.classList.remove("is-open");
   navToggle.setAttribute("aria-expanded", "false");
+
   document.body.classList.remove("menu-open");
 };
 
 if (navToggle && siteNav) {
   navToggle.addEventListener("click", () => {
     const expanded = navToggle.getAttribute("aria-expanded") === "true";
+
     navToggle.setAttribute("aria-expanded", String(!expanded));
     siteNav.classList.toggle("is-open");
+
     document.body.classList.toggle("menu-open");
   });
 
@@ -27,19 +32,30 @@ if (navToggle && siteNav) {
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeMenu();
+    if (event.key === "Escape") {
+      closeMenu();
+    }
   });
 
   document.addEventListener("click", (event) => {
     const isOpen = siteNav.classList.contains("is-open");
-    if (!isOpen) return;
+    if (!isOpen) {
+      return;
+    }
+
     const target = event.target;
-    if (!(target instanceof Element)) return;
-    if (!siteNav.contains(target) && !navToggle.contains(target)) closeMenu();
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    if (!siteNav.contains(target) && !navToggle.contains(target)) {
+      closeMenu();
+    }
   });
 }
 
 const currentPath = window.location.pathname.split("/").pop() || "index.html";
+
 document.querySelectorAll(".nav__list a, .footer-links a").forEach((link) => {
   const href = link.getAttribute("href");
   if (href === currentPath) {
@@ -53,7 +69,10 @@ document.querySelectorAll(".nav__list a, .footer-links a").forEach((link) => {
 window.addEventListener(
   "scroll",
   () => {
-    if (!header) return;
+    if (!header) {
+      return;
+    }
+
     header.classList.toggle("site-header--scrolled", window.scrollY > 8);
   },
   { passive: true },
@@ -64,20 +83,29 @@ yearNodes.forEach((node) => {
 });
 
 const loadGa4 = () => {
-  if (!GA4_ID || GA4_ID === "G-XXXXXXXXXX") return;
-  if (window.__gaLoaded) return;
+  if (!GA4_ID || GA4_ID === "G-XXXXXXXXXX") {
+    return;
+  }
+
+  if (window.__gaLoaded) {
+    return;
+  }
+
   window.__gaLoaded = true;
 
   const script = document.createElement("script");
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
+
   document.head.appendChild(script);
 
   window.dataLayer = window.dataLayer || [];
   function gtag() {
     window.dataLayer.push(arguments);
   }
+
   window.gtag = gtag;
+
   gtag("js", new Date());
   gtag("config", GA4_ID, { anonymize_ip: true });
 };
@@ -105,16 +133,19 @@ if (COOKIE_BANNER_ENABLED && !currentConsent) {
       <button type="button" class="btn btn--secondary" data-cookie-decline>Отказвам</button>
     </div>
   `;
+
   document.body.appendChild(banner);
 
   const acceptBtn = banner.querySelector("[data-cookie-accept]");
   const declineBtn = banner.querySelector("[data-cookie-decline]");
+
   if (acceptBtn instanceof HTMLButtonElement) {
     acceptBtn.addEventListener("click", () => {
       setConsent("accepted");
       banner.remove();
     });
   }
+
   if (declineBtn instanceof HTMLButtonElement) {
     declineBtn.addEventListener("click", () => {
       setConsent("declined");
@@ -127,10 +158,14 @@ document.querySelectorAll("form.quote-form").forEach((form) => {
   form.addEventListener("submit", async (event) => {
     const statusNode = form.querySelector(".form-status");
     const action = form.getAttribute("action") || "";
-    if (!action.includes("formspree.io")) return;
+    if (!action.includes("formspree.io")) {
+      return;
+    }
 
     event.preventDefault();
-    if (!(form instanceof HTMLFormElement)) return;
+    if (!(form instanceof HTMLFormElement)) {
+      return;
+    }
 
     if (statusNode) {
       statusNode.textContent = "Изпращаме заявката...";

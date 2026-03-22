@@ -1,10 +1,83 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CleanFlow">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0f8d7a"/>
-      <stop offset="1" stop-color="#0f6ad8"/>
+    <linearGradient id="brand" x1="180" y1="180" x2="1320" y2="720" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E88E5"/>
+      <stop offset="55%" stop-color="#00ACC1"/>
+      <stop offset="100%" stop-color="#43A047"/>
     </linearGradient>
+    <linearGradient id="wave" x1="170" y1="620" x2="740" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E88E5"/>
+      <stop offset="100%" stop-color="#00C2A8"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0B2540" flood-opacity="0.10"/>
+    </filter>
   </defs>
-  <rect width="64" height="64" rx="14" fill="url(#g)"/>
-  <path d="M18 32c0-7.7 6.3-14 14-14h14v8H32c-3.3 0-6 2.7-6 6s2.7 6 6 6h8v8h-8c-7.7 0-14-6.3-14-14z" fill="#fff"/>
+
+  <g filter="url(#softShadow)">
+    <!-- icon -->
+    <g transform="translate(170 180)">
+      <!-- outer C ring -->
+      <path d="M238 88
+               C194 40 127 23 67 45
+               C-14 74 -49 159 -27 239
+               C-5 320 73 374 155 359
+               C208 350 250 319 275 274"
+            stroke="url(#brand)" stroke-width="44" stroke-linecap="round" fill="none"/>
+      <!-- inner wave -->
+      <path d="M22 233
+               C84 189 149 188 220 230
+               C258 252 299 265 342 262"
+            stroke="url(#wave)" stroke-width="28" stroke-linecap="round" fill="none"/>
+      <!-- droplet -->
+      <path d="M300 42
+               C262 89 238 126 238 171
+               C238 230 283 273 342 273
+               C402 273 447 229 447 171
+               C447 126 420 88 384 42
+               C369 23 356 10 342 -8
+               C328 10 315 23 300 42Z"
+            fill="url(#brand)"/>
+      <!-- sparkle -->
+      <path d="M442 54
+               L456 93 L495 107 L456 121 L442 160
+               L428 121 L389 107 L428 93 Z"
+            fill="#7CE7F2"/>
+      <circle cx="470" cy="188" r="11" fill="#7CE7F2"/>
+      <circle cx="90" cy="88" r="9" fill="#7CE7F2" opacity="0.8"/>
+    </g>
+
+    <!-- wordmark -->
+    <g transform="translate(620 318)">
+      <text x="0" y="0"
+            font-family="Inter, Poppins, Arial, Helvetica, sans-serif"
+            font-size="170"
+            font-weight="800"
+            letter-spacing="-4"
+            fill="#12324A">Clean</text>
+      <text x="495" y="0"
+            font-family="Inter, Poppins, Arial, Helvetica, sans-serif"
+            font-size="170"
+            font-weight="800"
+            letter-spacing="-4"
+            fill="url(#brand)">Flow</text>
+
+      <text x="8" y="104"
+            font-family="Inter, Arial, Helvetica, sans-serif"
+            font-size="48"
+            font-weight="600"
+            letter-spacing="5"
+            fill="#5A7387">PROFESSIONAL CLEANING</text>
+
+      <text x="10" y="168"
+            font-family="Inter, Arial, Helvetica, sans-serif"
+            font-size="42"
+            font-weight="500"
+            letter-spacing="1"
+            fill="#6C8799">почистване на домове и офиси</text>
+
+      <path d="M18 214 C140 184 289 190 416 222 C562 259 713 258 905 203"
+            stroke="url(#wave)" stroke-width="20" stroke-linecap="round" fill="none"/>
+    </g>
+  </g>
 </svg>
