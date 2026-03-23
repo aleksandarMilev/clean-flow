@@ -9,7 +9,6 @@ const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 );
 
-// Currency conversion utility
 const EUR_TO_BGN_RATE = 1.96;
 
 const formatPrice = (eurAmount) => {
@@ -266,7 +265,6 @@ document.querySelectorAll("form.quote-form").forEach((form) => {
   });
 });
 
-// Call FAB toggle functionality
 const callFabToggle = document.querySelector("[data-call-fab-toggle]");
 const callFabGroup = document.querySelector(".call-fab-group");
 const callFabMenu = document.querySelector(".call-fab-menu");
