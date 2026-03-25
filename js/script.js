@@ -213,28 +213,61 @@ if (COOKIE_BANNER_ENABLED && !currentConsent) {
 document.querySelectorAll("form.quote-form").forEach((form) => {
   form.addEventListener("submit", async (event) => {
     const statusNode = form.querySelector(".form-status");
-    const action = form.getAttribute("action") || "";
-    if (!action.includes("formspree.io")) {
-      return;
-    }
-
-    event.preventDefault();
     if (!(form instanceof HTMLFormElement)) {
       return;
     }
 
-    if (statusNode) {
-      statusNode.textContent = "Изпращаме заявката...";
+    const action = (form.getAttribute("action") || "").trim();
+    if (!action) {
+      event.preventDefault();
+      if (statusNode) {
+        statusNode.textContent =
+          "Missing form endpoint. Set a valid Formspree endpoint in the form action.";
+      }
+      return;
     }
 
-    const submitBtn = form.querySelector('button[type=\"submit\"]');
+    let endpoint;
+    try {
+      endpoint = new URL(action, window.location.href);
+    } catch (error) {
+      event.preventDefault();
+      if (statusNode) {
+        statusNode.textContent =
+          "Invalid form endpoint URL. Check the form action attribute.";
+      }
+      return;
+    }
+
+    const isFormspreeEndpoint =
+      endpoint.hostname === "formspree.io" ||
+      endpoint.hostname.endsWith(".formspree.io");
+    if (!isFormspreeEndpoint) {
+      return;
+    }
+
+    if (/placeholder|your-form-id|changeme/i.test(action)) {
+      event.preventDefault();
+      if (statusNode) {
+        statusNode.textContent =
+          "Formspree endpoint is not configured. Replace PLACEHOLDER_FORM_ID with the real Formspree form ID.";
+      }
+      return;
+    }
+
+    event.preventDefault();
+    if (statusNode) {
+      statusNode.textContent = "Sending request...";
+    }
+
+    const submitBtn = form.querySelector('button[type="submit"]');
     if (submitBtn instanceof HTMLButtonElement) {
       submitBtn.disabled = true;
     }
 
     try {
       const formData = new FormData(form);
-      const response = await fetch(action, {
+      const response = await fetch(endpoint.toString(), {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },
@@ -244,18 +277,33 @@ document.querySelectorAll("form.quote-form").forEach((form) => {
         form.reset();
         if (statusNode) {
           statusNode.textContent =
-            "Благодарим ви! Заявката е изпратена успешно. Ще се свържем с вас възможно най-скоро.";
+            "Thank you. Your request was sent successfully. We will contact you soon.";
         }
       } else {
+        let detail = "";
+        try {
+          const payload = await response.json();
+          if (Array.isArray(payload?.errors) && payload.errors.length > 0) {
+            detail = payload.errors
+              .map((err) => err?.message)
+              .filter(Boolean)
+              .join(" ");
+          }
+        } catch (error) {
+          // Keep generic message when server does not return JSON details.
+        }
+
         if (statusNode) {
-          statusNode.textContent =
-            "Неуспешно изпращане. Моля, опитайте отново или се обадете на 0895 136 651 или 0896 654 801.";
+          statusNode.textContent = detail
+            ? "Submission failed (" + response.status + "): " + detail
+            : "Submission failed (" + response.status + "). Check Formspree configuration and try again.";
         }
       }
     } catch (error) {
+      console.error("Form submission failed:", error);
       if (statusNode) {
         statusNode.textContent =
-          "Възникна проблем при изпращането. Моля, опитайте отново.";
+          "Network or configuration error while submitting. Check connectivity and access to formspree.io.";
       }
     } finally {
       if (submitBtn instanceof HTMLButtonElement) {
