@@ -2,7 +2,7 @@ const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.querySelector(".site-nav");
 const header = document.querySelector(".site-header");
 const yearNodes = document.querySelectorAll("[data-current-year]");
-const GA4_ID = "G-XXXXXXXXXX";
+const GA4_ID = "G-PF00CB2V46";
 const COOKIE_BANNER_ENABLED = true;
 const CONSENT_KEY = "cleanflow_cookie_consent";
 const prefersReducedMotion = window.matchMedia(
@@ -296,7 +296,9 @@ document.querySelectorAll("form.quote-form").forEach((form) => {
         if (statusNode) {
           statusNode.textContent = detail
             ? "Submission failed (" + response.status + "): " + detail
-            : "Submission failed (" + response.status + "). Check Formspree configuration and try again.";
+            : "Submission failed (" +
+              response.status +
+              "). Check Formspree configuration and try again.";
         }
       }
     } catch (error) {
