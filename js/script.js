@@ -11,14 +11,12 @@ const prefersReducedMotion = window.matchMedia(
 
 const EUR_TO_BGN_RATE = 1.96;
 
-const formatPrice = (eurAmount) => {
-  const bgnAmount = Math.round(eurAmount * EUR_TO_BGN_RATE);
-  return bgnAmount;
-};
+const formatPrice = (eurAmount) => Math.round(eurAmount * EUR_TO_BGN_RATE);
 
 const formatPriceRange = (eurMin, eurMax) => {
   const bgnMin = formatPrice(eurMin);
   const bgnMax = formatPrice(eurMax);
+
   return { bgnMin, bgnMax };
 };
 
@@ -222,8 +220,9 @@ document.querySelectorAll("form.quote-form").forEach((form) => {
       event.preventDefault();
       if (statusNode) {
         statusNode.textContent =
-          "Missing form endpoint. Set a valid Formspree endpoint in the form action.";
+          "Липсва адрес за изпращане на формата. Добавете валиден Formspree endpoint в action.";
       }
+
       return;
     }
 
@@ -234,8 +233,9 @@ document.querySelectorAll("form.quote-form").forEach((form) => {
       event.preventDefault();
       if (statusNode) {
         statusNode.textContent =
-          "Invalid form endpoint URL. Check the form action attribute.";
+          "Невалиден адрес за изпращане на формата. Проверете action атрибута.";
       }
+
       return;
     }
 
@@ -250,14 +250,15 @@ document.querySelectorAll("form.quote-form").forEach((form) => {
       event.preventDefault();
       if (statusNode) {
         statusNode.textContent =
-          "Formspree endpoint is not configured. Replace PLACEHOLDER_FORM_ID with the real Formspree form ID.";
+          "Formspree endpoint не е конфигуриран. Задайте реален Formspree form ID в action URL.";
       }
+
       return;
     }
 
     event.preventDefault();
     if (statusNode) {
-      statusNode.textContent = "Sending request...";
+      statusNode.textContent = "Изпращаме заявката...";
     }
 
     const submitBtn = form.querySelector('button[type="submit"]');
@@ -277,7 +278,7 @@ document.querySelectorAll("form.quote-form").forEach((form) => {
         form.reset();
         if (statusNode) {
           statusNode.textContent =
-            "Thank you. Your request was sent successfully. We will contact you soon.";
+            "Благодарим ви! Заявката е изпратена успешно. Ще се свържем с вас възможно най-скоро.";
         }
       } else {
         let detail = "";
@@ -295,17 +296,17 @@ document.querySelectorAll("form.quote-form").forEach((form) => {
 
         if (statusNode) {
           statusNode.textContent = detail
-            ? "Submission failed (" + response.status + "): " + detail
-            : "Submission failed (" +
+            ? "Неуспешно изпращане (" + response.status + "): " + detail
+            : "Неуспешно изпращане (" +
               response.status +
-              "). Check Formspree configuration and try again.";
+              "). Проверете Formspree настройката и опитайте отново.";
         }
       }
     } catch (error) {
       console.error("Form submission failed:", error);
       if (statusNode) {
         statusNode.textContent =
-          "Network or configuration error while submitting. Check connectivity and access to formspree.io.";
+          "Мрежова или конфигурационна грешка при изпращане. Проверете връзката и достъпа до formspree.io.";
       }
     } finally {
       if (submitBtn instanceof HTMLButtonElement) {
